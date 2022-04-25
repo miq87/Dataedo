@@ -1,0 +1,16 @@
+<div class="d-flex flex-column justify-content-center align-items-center" *ngIf="person">
+  <div class="m-2">
+    <img [src]="person.results[0].picture.large"
+    (mouseover)="pauseTimer()" (mouseleave)="startTimer()">
+  </div>
+  <div class="m-2">
+    <span>Hi, my name is</span>
+  </div>
+  <div class="m-2">
+    <h3 (mouseover)="pauseTimer()" (mouseleave)="startTimer()">
+        {{ person.results[0].name.first }} {{ person.results[0].name.last }}</h3>
+  </div>
+  <div class="m-2">
+    <button type="button" class="btn btn-md btn-primary" (click)="startTimer()">NEW</button>
+  </div>
+</div>

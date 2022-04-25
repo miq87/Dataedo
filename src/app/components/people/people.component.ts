@@ -10,7 +10,6 @@ export class PeopleComponent implements OnInit {
 
   person: any
   interval: any
-  time = 0
 
   constructor(private randomUserService: RandomUserService) { }
 
@@ -23,7 +22,7 @@ export class PeopleComponent implements OnInit {
     console.log("Timer started")
     this.interval = setInterval(() => {
       this.getRandomUser()
-    }, 2000)
+    }, 5000)
   }
 
   pauseTimer(): void {

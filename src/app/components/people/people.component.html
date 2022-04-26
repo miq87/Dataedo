@@ -1,15 +1,14 @@
 <countdown #cd [config]="config" (event)="handleEvent($event)"></countdown>
 <div class="d-flex flex-column justify-content-center align-items-center" *ngIf="person">
   <div class="m-2">
-    <img [src]="person.results[0].picture.large"
-    (mouseover)="pauseTimer()" (mouseleave)="resumeTimer()">
+    <img [src]="person.results[0].picture.large" (mouseover)="pauseTimer()" (mouseleave)="resumeTimer()">
   </div>
   <div class="m-2">
     <span class="text-secondary">Hi, My name is</span>
   </div>
   <div class="m-2">
     <h3 (mouseover)="pauseTimer()" (mouseleave)="resumeTimer()">
-        {{ person.results[0].name.first }} {{ person.results[0].name.last }}</h3>
+      {{ person.results[0].name.first }} {{ person.results[0].name.last }}</h3>
   </div>
   <div class="m-2">
     <button type="button" class="btn btn-sm btn-primary" (click)="startTimer()">New</button>

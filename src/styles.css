@@ -8,3 +8,10 @@
 .navbar-nav .nav-link.active {
   font-weight: bold;
 }
+
+countdown {
+  position: absolute;
+  top: 2px;
+  left: 4px;
+  color: burlywood;
+}

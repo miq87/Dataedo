@@ -1,17 +1,20 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subscription, timer } from 'rxjs';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
+import { CountdownComponent, CountdownConfig } from 'ngx-countdown';
 import { RandomUserService } from 'src/app/services/random-user.service';
 
 @Component({
   selector: 'app-people',
   templateUrl: './people.component.html'
 })
-export class PeopleComponent implements OnInit, OnDestroy {
+export class PeopleComponent implements OnInit {
 
+  @ViewChild('cd', { static: false }) private countdown: CountdownComponent
+  config: CountdownConfig = {
+    leftTime: 5,
+    demand: true
+  }
   person: any
-  source: any
-  sub: Subscription
-  isTimerPaused = false
+  hasTimerStarted = false
 
   constructor(private randomUserService: RandomUserService) { }
 
@@ -19,30 +22,26 @@ export class PeopleComponent implements OnInit, OnDestroy {
     this.getRandomUser()
   }
 
+  handleEvent(event: any) {
+    if(event.action === "done") {
+      this.startTimer()
+    }
+  }
+
   startTimer() {
-    this.sub?.unsubscribe()
-    this.source = timer(0, 5000)
-    this.sub = this.source.subscribe({
-      next: (v: any) => {
-        if(!this.isTimerPaused) {
-          this.getRandomUser()
-          console.log(new Date())
-        }
-      },
-      error: () => console.log("Problem with loading peoples")
-    })
+    this.hasTimerStarted = true
+    this.getRandomUser()
+    this.countdown.restart()
+    this.countdown.begin()
   }
 
   pauseTimer() {
-    this.isTimerPaused = true
+    this.countdown.pause()
   }
 
   resumeTimer() {
-    this.isTimerPaused = false
-  }
-
-  ngOnDestroy(): void {
-    this.sub?.unsubscribe()
+    if(this.hasTimerStarted)
+      this.countdown.resume()
   }
 
   getRandomUser(): void {

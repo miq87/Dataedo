@@ -1,3 +1,4 @@
+<countdown #cd [config]="config" (event)="handleEvent($event)"></countdown>
 <div class="d-flex flex-column justify-content-center align-items-center" *ngIf="person">
   <div class="m-2">
     <img [src]="person.results[0].picture.large"

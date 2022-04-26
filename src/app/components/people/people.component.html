@@ -4,13 +4,13 @@
     (mouseover)="pauseTimer()" (mouseleave)="startTimer()">
   </div>
   <div class="m-2">
-    <span>Hi, my name is</span>
+    <span class="text-secondary">Hi, My name is</span>
   </div>
   <div class="m-2">
     <h3 (mouseover)="pauseTimer()" (mouseleave)="startTimer()">
         {{ person.results[0].name.first }} {{ person.results[0].name.last }}</h3>
   </div>
   <div class="m-2">
-    <button type="button" class="btn btn-md btn-primary" (click)="startTimer()">NEW</button>
+    <button type="button" class="btn btn-sm btn-primary" (click)="firstStart(); startTimer()">New</button>
   </div>
 </div>

@@ -5,6 +5,6 @@
   letter-spacing: 1px;
 }
 
-span {
-    color: grey;
+.navbar-nav .nav-link.active {
+  font-weight: bold;
 }

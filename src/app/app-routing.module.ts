@@ -4,9 +4,9 @@ import { AboutComponent } from './components/about/about.component';
 import { PeopleComponent } from './components/people/people.component';
 
 const routes: Routes = [
-  { path: "people", component: PeopleComponent },
-  { path: "about", component: AboutComponent },
-  { path: "**", component: PeopleComponent },
+  { path: "people", pathMatch: "full", component: PeopleComponent },
+  { path: "about", pathMatch: "full", component: AboutComponent },
+  { path: "**", pathMatch: "full", component: PeopleComponent },
 ];
 
 @NgModule({

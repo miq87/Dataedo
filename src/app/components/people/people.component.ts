@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { interval, timer } from 'rxjs';
 import { RandomUserService } from 'src/app/services/random-user.service';
 
 @Component({
@@ -10,6 +9,7 @@ export class PeopleComponent implements OnInit {
 
   person: any
   interval: any
+  isTimerStarted = false
 
   constructor(private randomUserService: RandomUserService) { }
 
@@ -18,16 +18,24 @@ export class PeopleComponent implements OnInit {
   }
 
   startTimer(): void {
-    clearInterval(this.interval)
-    console.log("Timer started")
-    this.interval = setInterval(() => {
-      this.getRandomUser()
-    }, 5000)
+    if(this.isTimerStarted) {
+      clearInterval(this.interval)
+      console.log("Timer started")
+      this.interval = setInterval(() => {
+        this.getRandomUser()
+      }, 1500)
+    }
   }
 
   pauseTimer(): void {
-    clearInterval(this.interval)
-    console.log("Timer paused")
+    if(this.isTimerStarted) {
+      clearInterval(this.interval)
+      console.log("Timer paused")
+    }
+  }
+
+  firstStart(): void {
+    this.isTimerStarted = true
   }
 
   getRandomUser(): void {

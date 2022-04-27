@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CountdownComponent, CountdownConfig } from 'ngx-countdown';
 import { RandomUserService } from 'src/app/services/random-user.service';
 
